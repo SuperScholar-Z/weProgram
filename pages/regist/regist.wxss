@@ -1,0 +1,32 @@
+/* pages/regist.wxss */
+
+/* 横分割线 */
+.divLine{
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+  background: #E0E3DA;
+  height: 5rpx;
+  width: 100%;
+}
+/* 信息表 */
+.textMenu{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+/* 一行信息 */
+.textLine{
+  display: flex;
+  justify-content: center;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+.label{
+  margin-right: 10rpx;
+}
+/* 提交按钮 */
+.submitBtn{
+  width: 50%;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}

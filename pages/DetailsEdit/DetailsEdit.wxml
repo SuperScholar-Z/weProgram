@@ -1,0 +1,6 @@
+<!--pages/DetailsEdit/DetailsEdit.wxml-->
+<view>
+  <input class='detail-input' value='{{content}}'></input>
+  <view class='divLine'></view>
+  <button class='confirm-button'>确认修改</button>
+</view>
