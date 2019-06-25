@@ -1,0 +1,27 @@
+<!--pages/Text/Text.wxml-->
+<scroll-view>
+  <form bindsubmit='submitForm'>
+    <view class="divLine"></view>
+    <!-- 显示表单 -->
+    <view wx:for='{{form}}'>
+      <!-- 单行输入框 -->
+      <view wx:if='{{form[index].type=="textBox"}}' class='inputLine'>
+        <label style='width: {{(form[index].itemName.length + 1) * 40}}rpx;' class='itemName'>{{form[index].itemName}}:</label>
+        <input style='width: {{650 - (form[index].itemName.length + 1) * 40}}rpx;' name='{{form[index].itemName}}' class='inputBox' value='{{form[index].defaultValue}}' disabled='{{!form[index].writable}}'></input>
+      </view>
+      <!-- 多行输入框 -->
+      <view wx:elif='{{form[index].type=="textArea"}}' class='inputLine'>
+        <label style='width: {{(form[index].itemName.length + 1) * 40}}rpx;' class='itemName'>{{form[index].itemName}}:</label>
+        <textarea style='width: {{650 - (form[index].itemName.length + 1) * 40}}rpx;' name='{{form[index].itemName}}' class='textArea' value='{{form[index].defaultValue}}' disabled='{{!form[index].writable}}'></textarea>
+      </view>
+      <!-- 选择框 -->
+      <view wx:else class='inputLine'>
+        <label style='width: {{(form[index].itemName.length + 1) * 40}}rpx;' class='itemName'>{{form[index].itemName}}:</label>
+        <picker style='width: {{650 - (form[index].itemName.length + 1) * 40}}rpx;' name='{{form[index].itemName}}' class='inputBox' disabled='{{!form[index].writable}}' value='{{pickerBox[index]}}' range='{{form[index].values}}' bindchange='bindPickerChange' data-index='{{index}}'>{{form[index].values[pickerBox[index]]}}</picker>
+      </view>
+      <view class="divLine"></view>
+    </view>
+    <!-- 提交按钮 -->
+    <button form-type='submit' class='submitBtn'>提交</button>
+  </form>
+</scroll-view>

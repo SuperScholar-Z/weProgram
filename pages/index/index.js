@@ -17,6 +17,12 @@ Page({
       url: '../logs/logs'
     })
   },
+  //填流程表格
+  toFormPage: function(){
+    wx.navigateTo({
+      url: '../Form/Form',
+    })
+  },
   //跳转个人主页
   toProfilePage: function(){
     wx.navigateTo({
@@ -52,7 +58,7 @@ Page({
     }
   },
   //注册按钮
-  bindRegist: function (e) {
+  toRegistPage: function (e) {
     if (e.detail.userInfo) {  //用户允许授权
       wx.navigateTo({
         url: '../regist/regist'
@@ -75,6 +81,8 @@ Page({
         userInfo: e.detail.userInfo,
         hasUserInfo: true
       })
+      console.log(e.detail)
+      console.log(e.detail.userInfo)
     }
   }
 })

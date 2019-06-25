@@ -1,0 +1,42 @@
+/* pages/Text/Text.wxss */
+
+/* 横分割线 */
+.divLine{
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+  background: #E0E3DA;
+  height: 5rpx;
+  width: 100%;
+}
+/* 一行信息 */
+.inputLine{ /* 单行文本 */
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+.textAreaLine{  /* 多行文本 */
+  display: flex;
+  justify-content: center;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  height: 60rpx;
+}
+.itemName{
+  margin-left: 40rpx;
+}
+.inputBox{
+  margin-left: 0rpx;
+  margin-right: 20rpx;
+}
+.textArea{
+  margin-left: 0rpx;
+  margin-right: 20rpx;
+  height: 230rpx;
+}
+/* 提交按钮 */
+.submitBtn{
+  width: 50%;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}

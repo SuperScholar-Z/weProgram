@@ -3,7 +3,7 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/regist/regist",
-    "pages/Text/Text",
+    "pages/Form/Form",
     "pages/Profile/Profile",
     "pages/DetailsEdit/DetailsEdit"
   ],
