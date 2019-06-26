@@ -1,20 +1,30 @@
 <!--pages/regist.wxml-->
 <scroll-view>
-  <form>
+  <form bindsubmit='regist'>
     <view class="divLine"></view>
     <view class='textLine'>
-      <label class='label'>姓名</label>
-      <input name="name_input"></input>
+      <label class='label'>账号:</label>
+      <input name="username" style='width: 550rpx;'></input>
     </view>
     <view class="divLine"></view>
     <view class='textLine'>
-      <label class='label'>电话号码</label>
-      <input name="phone_input"></input>
+      <label class='label'>密码:</label>
+      <input name="password" password='true' style='width: 550rpx;'></input>
     </view>
     <view class="divLine"></view>
     <view class='textLine'>
-      <label class='label'>岗位</label>
-      <input name="position_input"></input>
+      <label class='label'>确认密码:</label>
+      <input name="password_confirm" password='true' style='width: 470rpx;'></input>
+    </view>
+    <view class="divLine"></view>
+    <view class='textLine'>
+      <label class='label'>姓名:</label>
+      <input name="name" style='width: 550rpx;'></input>
+    </view>
+    <view class="divLine"></view>
+    <view class='textLine'>
+      <label class='label'>电话号码:</label>
+      <input type='number' name="phoneNumber" style='width: 470rpx;'></input>
     </view>
     <view class="divLine"></view>
     <button form-type='submit' class='submitBtn'>提交</button>

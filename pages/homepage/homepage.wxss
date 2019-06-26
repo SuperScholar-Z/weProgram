@@ -1,0 +1,97 @@
+/**index.wxss**/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 顶部栏 */
+.text-bar{
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+/* 头像 */
+.userinfo-avatar {
+  width: 110rpx;
+  height: 110rpx;
+  margin-right: 20rpx;
+  border-radius: 50%;
+}
+/* 登录按钮 */
+.text-login{
+  color: #0000ff;
+  background-color: #ffffff;
+  display: block;
+  box-sizing: border-box;
+  margin: 0rpx 10rpx;
+  padding: 5rpx;
+  font-size: 40rpx;
+  height: 70%;
+}
+.text-login::after{
+  border: none;
+}
+/* 注册按钮 */
+.text-regist{
+  color: #0000ff;
+  background-color: #ffffff;
+  display: block;
+  box-sizing: border-box;
+  margin: 0rpx 10rpx;
+  padding: 5rpx;
+  font-size: 40rpx;
+  height: 70%;
+}
+.text-regist::after{
+  border: none;
+}
+.text-hover{
+  background-color: grey;
+}
+/* 竖分割线 */
+.divLine{
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+  background: #E0E3DA;
+  height: 110rpx;
+  width: 5rpx;
+}
+
+/* 流程各按钮列表 */
+.flow-buttons{
+  margin-left: 30rpx;
+  margin-top: 10rpx;
+  display: flex;
+  flex-direction:row;
+  flex-wrap: wrap;
+  justify-content:flex-start;
+}
+/* 单个按钮 */
+.button-class{
+  margin: 0rpx 0rpx;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+.button-class::after{
+  border: none;
+}
+.button-class-hover{
+  background-color: grey;
+}
+/* 按钮图片 */
+.circle{
+  width: 165rpx;
+  height: 165rpx;
+  border: 0 solid #ffffff;
+  border-radius: 250px; 
+  margin-top: 20rpx;
+}
+/* 按钮文字 */
+.flowtext{
+  width: 100rpx;
+  display: flex;
+  justify-content: center;
+}

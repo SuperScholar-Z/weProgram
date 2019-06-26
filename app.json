@@ -2,10 +2,11 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
+    "pages/homepage/homepage",
     "pages/regist/regist",
-    "pages/Form/Form",
-    "pages/Profile/Profile",
-    "pages/DetailsEdit/DetailsEdit"
+    "pages/form/form",
+    "pages/profile/profile",
+    "pages/detailsedit/detailsedit"
   ],
   "window": {
     "backgroundTextStyle": "light",

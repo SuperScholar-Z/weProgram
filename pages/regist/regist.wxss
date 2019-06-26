@@ -17,12 +17,13 @@
 /* 一行信息 */
 .textLine{
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   margin-top: 20rpx;
   margin-bottom: 20rpx;
 }
 .label{
-  margin-right: 10rpx;
+  margin-left: 40rpx;
+  margin-right: 20rpx;
 }
 /* 提交按钮 */
 .submitBtn{

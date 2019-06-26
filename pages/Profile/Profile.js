@@ -7,28 +7,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo: null,
-
-    userName: "XXX",
-    phoneNumber: "XXXXXXXXXXX",
-    position: "XX",
+    userInfo: null
   },
   // 修改个人信息
-  editDetails: function(button){
-    var formName = button.currentTarget.dataset.formname
-    var content
-    if(formName == '姓名'){
-      content = this.data.userName
-    }
-    else if(formName=='电话号码'){
-      content = this.data.phoneNumber
-    }
-    else{
-      content = this.data.position
-    }
+  editDetails: function(obj){
+    var formName = obj.currentTarget.dataset.formname
+    var content = this.data.userInfo[formName]
     
     wx.navigateTo({
-      url: '../DetailsEdit/DetailsEdit?formName=' + formName + '&content=' + content
+      url: '../detailsedit/detailsedit?formName=' + formName + '&content=' + content
     })
   },
 

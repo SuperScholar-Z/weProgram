@@ -68,6 +68,7 @@ Page({
         fail: function (res) {
           wx.showToast({
             title: '错误:' + res.errMsg,
+            icon: 'none'
           })
         }
       })

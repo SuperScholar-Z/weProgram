@@ -1,97 +1,47 @@
-/**index.wxss**/
-.userinfo {
+/* pages/index/index.wxss */
+
+/* 登录框区域 */
+.loginArea{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: flex-start;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
 }
-
-/* 顶部栏 */
-.text-bar{
+.loginLabel{
+  margin: 10rpx 40rpx;
+}
+.loginInput{
+  margin: 10rpx 40rpx;
+  width: 670rpx;
+  height: 80rpx;
+  border: 1px solid #cccccc;
+}
+/* 注册账号 */
+.registBtn{
   display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;
   justify-content: flex-end;
+  width: 140rpx;
+  margin-right: 40rpx;
+  padding: 5rpx 10rpx;
+  background-color: #ffffff;
+  font-size: 30rpx;
+  color: #0000ff;
 }
-/* 头像 */
-.userinfo-avatar {
-  width: 110rpx;
-  height: 110rpx;
-  margin-right: 20rpx;
-  border-radius: 50%;
+.registBtn::after{
+  border: none;
+}
+.registBtn-hover{
+  color: turquoise;
 }
 /* 登录按钮 */
-.text-login{
-  color: #0000ff;
-  background-color: #ffffff;
-  display: block;
-  box-sizing: border-box;
-  margin: 0rpx 10rpx;
-  padding: 5rpx;
+.loginBtn{
+  width: 50%;
+  margin-top: 40rpx;
+  margin-bottom: 20rpx;
+  padding: 0rpx 00rpx;
   font-size: 40rpx;
-  height: 70%;
 }
-.text-login::after{
-  border: none;
-}
-/* 注册按钮 */
-.text-regist{
-  color: #0000ff;
-  background-color: #ffffff;
-  display: block;
-  box-sizing: border-box;
-  margin: 0rpx 10rpx;
-  padding: 5rpx;
-  font-size: 40rpx;
-  height: 70%;
-}
-.text-regist::after{
-  border: none;
-}
-.text-hover{
+.loginBtn-hover{
   background-color: grey;
-}
-/* 竖分割线 */
-.divLine{
-  margin-left: 10rpx;
-  margin-right: 10rpx;
-  background: #E0E3DA;
-  height: 110rpx;
-  width: 5rpx;
-}
-
-/* 流程各按钮列表 */
-.flow-buttons{
-  margin-left: 30rpx;
-  margin-top: 10rpx;
-  display: flex;
-  flex-direction:row;
-  flex-wrap: wrap;
-  justify-content:flex-start;
-}
-/* 单个按钮 */
-.button-class{
-  margin: 0rpx 0rpx;
-  display: flex;
-  flex-direction: column;
-  background-color: white;
-}
-.button-class::after{
-  border: none;
-}
-.button-class-hover{
-  background-color: grey;
-}
-/* 按钮图片 */
-.circle{
-  width: 165rpx;
-  height: 165rpx;
-  border: 0 solid #ffffff;
-  border-radius: 250px; 
-  margin-top: 20rpx;
-}
-/* 按钮文字 */
-.flowtext{
-  width: 100rpx;
-  display: flex;
-  justify-content: center;
 }

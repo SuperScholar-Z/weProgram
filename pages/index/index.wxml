@@ -1,31 +1,11 @@
-<!--index.wxml-->
-<scroll-view>
-  <!-- 顶部栏 -->
-  <view class='text-bar'>
-    <image wx:if="{{userInfo!=null}}" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover" bindtap='toProfilePage'></image>
-    <image wx:else class="userinfo-avatar" src="/images/Download.jpg" mode="cover"></image>
-    <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='text-login' hover-class='text-hover'>登录</button>
-      <view class="divLine"></view>
-    <button open-type="getUserInfo" bindgetuserinfo="toRegistPage" class='text-regist' hover-class='text-hover'>注册</button>
+<!--pages/index/index.wxml-->
+<form bindsubmit='login'>
+  <view class='loginArea'>
+    <label class='loginLabel'>账号:</label>
+    <input name='username' class='loginInput'></input>
+    <label class='loginLabel'>密码:</label>
+    <input name='password' class='loginInput' password='true'></input>
   </view>
-  <!-- 按钮列表 -->
-  <view wx:if="{{userInfo!=null}}" class='flow-buttons'>
-    <button wx:for="{{flowTexts}}" class='button-class' hover-class='button-class-hover' bindtap='toFormPage'>
-      <image mode='scaleToFill' src='{{flowImages[index]}}' plain='true' class='circle'></image>
-      <text class='viewclass'>{{item}}</text>
-    </button>
-  </view>
-</scroll-view>
-
-<!-- <view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
-</view> -->
+  <button class='registBtn' hover-class='registBtn-hover' bindtap='regist'>注册账号</button>
+  <button form-type='submit' class='loginBtn' hover-class='loginBtn-hover'>登录</button>
+</form>

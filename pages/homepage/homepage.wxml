@@ -1,0 +1,17 @@
+<!--index.wxml-->
+<scroll-view>
+  <!-- 顶部栏 -->
+  <view class='text-bar'>
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover" bindtap='toProfilePage'></image>
+    <!-- <button class='text-login' hover-class='text-hover'>登录</button> -->
+    <!-- <view class="divLine"></view> -->
+    <button bindtap='logout' class='text-regist' hover-class='text-hover'>注销</button>
+  </view>
+  <!-- 按钮列表 -->
+  <view wx:if="{{userInfo!=null}}" class='flow-buttons'>
+    <button wx:for="{{process}}" class='button-class' hover-class='button-class-hover' bindtap='toFormPage'>
+      <image mode='scaleToFill' src='/images/title_picture.jpg' plain='true' class='circle'></image>
+      <text class='viewclass'>{{item}}</text>
+    </button>
+  </view>
+</scroll-view>

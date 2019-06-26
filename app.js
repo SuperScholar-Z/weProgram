@@ -1,6 +1,12 @@
 //app.js
 App({
   onLaunch: function () {
+    //若用户已登录，读取信息
+    if (this.globalData.userInfo == null){
+      this.globalData.userInfo = wx.getStorageSync('userInfo')
+    }
+    console.log(this.globalData)
+
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -20,7 +26,7 @@ App({
           wx.getUserInfo({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
-              this.globalData.userInfo = res.userInfo
+              this.globalData.wechatUserInfo = res.userInfo
 
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
@@ -34,6 +40,7 @@ App({
     })
   },
   globalData: {
+    wechatUserInfo: null,
     userInfo: null
   }
 })

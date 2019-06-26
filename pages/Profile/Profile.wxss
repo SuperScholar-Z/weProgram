@@ -36,6 +36,15 @@
 .textLine-hover{
   background-color: grey;
 }
+.label-disable{
+  margin: 25rpx 45rpx;
+  font-size: 40rpx;
+}
+.content-disable{
+  margin: 25rpx 45rpx;
+  font-size: 40rpx;
+  color: #999999;
+}
 .label{
   margin-left: 10rpx;
   margin-right: 10rpx;
