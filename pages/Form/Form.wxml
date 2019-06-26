@@ -7,17 +7,24 @@
       <!-- 单行输入框 -->
       <view wx:if='{{form[index].type=="textBox"}}' class='inputLine'>
         <label style='width: {{(form[index].itemName.length + 1) * 40}}rpx;' class='itemName'>{{form[index].itemName}}:</label>
-        <input style='width: {{650 - (form[index].itemName.length + 1) * 40}}rpx;' name='{{form[index].itemName}}' class='inputBox' value='{{form[index].defaultValue}}' disabled='{{!form[index].writable}}'></input>
+        <input name='{{form[index].itemName}}' class='inputBox' value='{{form[index].defaultValue}}' disabled='{{!form[index].writable}}'></input>
       </view>
       <!-- 多行输入框 -->
-      <view wx:elif='{{form[index].type=="textArea"}}' class='inputLine'>
+      <view wx:elif='{{form[index].type=="textArea"}}' class='textAreaLine'>
         <label style='width: {{(form[index].itemName.length + 1) * 40}}rpx;' class='itemName'>{{form[index].itemName}}:</label>
-        <textarea style='width: {{650 - (form[index].itemName.length + 1) * 40}}rpx;' name='{{form[index].itemName}}' class='textArea' value='{{form[index].defaultValue}}' disabled='{{!form[index].writable}}'></textarea>
+        <textarea style='flex-direction:column;' name='{{form[index].itemName}}' class='textArea' value='{{form[index].defaultValue}}' disabled='{{!form[index].writable}}'></textarea>
+      </view>
+      <!-- 勾选框 -->
+      <view wx:elif='{{form[index].type=="checkBox"}}' class='inputLine'>
+        <label style='width: {{(form[index].itemName.length + 1) * 40}}rpx;' class='itemName'>{{form[index].itemName}}:</label>
+        <checkbox-group name='{{form[index].itemName}}' class='checkBox-group'>
+          <checkbox wx:for='{{form[index].values}}' class='checkBox' value='{{item}}'>{{item}}</checkbox>
+        </checkbox-group>
       </view>
       <!-- 选择框 -->
       <view wx:else class='inputLine'>
         <label style='width: {{(form[index].itemName.length + 1) * 40}}rpx;' class='itemName'>{{form[index].itemName}}:</label>
-        <picker style='width: {{650 - (form[index].itemName.length + 1) * 40}}rpx;' name='{{form[index].itemName}}' class='inputBox' disabled='{{!form[index].writable}}' value='{{pickerBox[index]}}' range='{{form[index].values}}' bindchange='bindPickerChange' data-index='{{index}}'>{{form[index].values[pickerBox[index]]}}</picker>
+        <picker name='{{form[index].itemName}}' class='picker' disabled='{{!form[index].writable}}' value='{{pickerBox[index]}}' range='{{form[index].values}}' bindchange='bindPickerChange' data-index='{{index}}'>{{form[index].values[pickerBox[index]]}}</picker>
       </view>
       <view class="divLine"></view>
     </view>

@@ -40,7 +40,7 @@ Page({
                 title: '登录成功',
               })
               //登录信息保存本地缓存
-              var userInfo = res.data.userInfo
+              var userInfo = res.data.userInfo.user
               userInfo['username'] = obj.detail.value['username']
               userInfo['avatarUrl'] = '/images/Download.jpg'
               app.globalData.userInfo = JSON.parse(JSON.stringify(userInfo))

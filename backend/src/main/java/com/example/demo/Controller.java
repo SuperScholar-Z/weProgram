@@ -38,9 +38,12 @@ public class Controller {
             status = 0;
 
             Map<String, Object> userInfoMap = new HashMap<String, Object>();
-            userInfoMap.put("name", userInfo.get(index).getName());
-            userInfoMap.put("phoneNumber", userInfo.get(index).getPhoneNumber());
-            userInfoMap.put("position", userInfo.get(index).getPosition());
+            userInfoMap.put("jwt", "null");
+            Map<String, Object> user = new HashMap<String, Object>();
+            user.put("name", userInfo.get(index).getName());
+            user.put("phoneNumber", userInfo.get(index).getPhoneNumber());
+            user.put("position", userInfo.get(index).getPosition());
+            userInfoMap.put("user", user);
             res.put("userInfo", userInfoMap);
         }
         else{
@@ -115,13 +118,22 @@ public class Controller {
         values.add("内容1");
         values.add("内容2");
         values.add("内容3");
+        values.add("内容4");
         item3.put("values", values);
+        Map<String, Object> item4 = new HashMap<String, Object>();
+        item4.put("itemName", "接口4");
+        item4.put("writable", true);
+        item4.put("defaultValue", "内容3");
+        item4.put("required", false);
+        item4.put("type", "checkBox");
+        item4.put("values", values);
 
         Map<String, Object> res = new HashMap<String, Object>();
         ArrayList<Object> form = new ArrayList<>();
         form.add(item);
         form.add(item2);
         form.add(item3);
+        form.add(item4);
         res.put("taskId", "123456");
         res.put("formName", "体检表");
         res.put("form", form);

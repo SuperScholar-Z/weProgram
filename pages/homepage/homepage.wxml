@@ -5,7 +5,7 @@
     <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover" bindtap='toProfilePage'></image>
     <!-- <button class='text-login' hover-class='text-hover'>登录</button> -->
     <!-- <view class="divLine"></view> -->
-    <button bindtap='logout' class='text-regist' hover-class='text-hover'>注销</button>
+    <button bindtap='logout' class='text-regist' hover-class='text-regist-hover'>注销</button>
   </view>
   <!-- 按钮列表 -->
   <view wx:if="{{userInfo!=null}}" class='flow-buttons'>

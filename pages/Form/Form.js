@@ -94,7 +94,6 @@ Page({
       },
       success: function(res){
         //读取表单格式
-        console.log(res)
         that.setData({
           taskId: res.data.taskId,
           formName: res.data.formName,

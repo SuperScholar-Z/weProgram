@@ -47,6 +47,9 @@
 .text-regist::after{
   border: none;
 }
+.text-regist-hover{
+  color: turquoise;
+}
 .text-hover{
   background-color: grey;
 }

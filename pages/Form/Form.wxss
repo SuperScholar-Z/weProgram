@@ -15,24 +15,40 @@
   margin-top: 20rpx;
   margin-bottom: 20rpx;
 }
-.textAreaLine{  /* 多行文本 */
+.textAreaLine{ /* 多行文本 */
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   margin-top: 20rpx;
   margin-bottom: 20rpx;
-  height: 60rpx;
 }
 .itemName{
   margin-left: 40rpx;
 }
 .inputBox{
-  margin-left: 0rpx;
+  width: 100%;
+  margin-left: 10rpx;
   margin-right: 20rpx;
 }
 .textArea{
+  margin: 20rpx 20rpx 0rpx 40rpx;
+  height: 220rpx;
+}
+.checkBox-group{
   margin-left: 0rpx;
   margin-right: 20rpx;
-  height: 230rpx;
+}
+.checkBox{
+  margin: 0rpx 20rpx 10rpx 0rpx;
+  font-size: 30rpx;
+}
+checkbox .wx-checkbox-input {/*checkbox 选项框大小  */
+  width: 35rpx;
+  height: 35rpx;
+}
+.picker{
+  margin-left: 0rpx;
+  margin-right: 20rpx;
 }
 /* 提交按钮 */
 .submitBtn{
