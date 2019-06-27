@@ -62,9 +62,13 @@ Page({
       data: obj.detail.value,
       method: 'POST',
       success: function(res){
+        console.log(res.data)
         if(res.data.status == 0){
           wx.showToast({
             title: "已提交审核"
+          })
+          wx.navigateBack({
+            delta: 1
           })
         }
         else{

@@ -28,7 +28,7 @@ Page({
     wx.removeStorageSync('userInfo')
     console.log(app.globalData.userInfo)
 
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../index/index',
     })
   },
@@ -49,10 +49,19 @@ Page({
         'content-type': 'application/json',
       },
       success: function(res){
-        that.setData({
-          process: res.data
-        })
-        console.log(res.data)
+        if(res.data.status == 0)
+        {
+          that.setData({
+            process: res.data.process
+          })
+          console.log(res.data)
+        }
+        else{
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none'
+          })
+        }
       },
       fail: function (res) {
         wx.showToast({

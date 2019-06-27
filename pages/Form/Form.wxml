@@ -6,25 +6,25 @@
     <view wx:for='{{form}}'>
       <!-- 单行输入框 -->
       <view wx:if='{{form[index].type=="textBox"}}' class='inputLine'>
-        <label style='width: {{(form[index].itemName.length + 1) * 40}}rpx;' class='itemName'>{{form[index].itemName}}:</label>
-        <input name='{{form[index].itemName}}' class='inputBox' value='{{form[index].defaultValue}}' disabled='{{!form[index].writable}}'></input>
+        <label style='width: {{(form[index].name.length + 1) * 40}}rpx;' class='itemName'>{{form[index].name}}:</label>
+        <input name='{{form[index].itemId}}' class='inputBox' value='{{form[index].defaultValue}}' disabled='{{!form[index].writable}}'></input>
       </view>
       <!-- 多行输入框 -->
       <view wx:elif='{{form[index].type=="textArea"}}' class='textAreaLine'>
-        <label style='width: {{(form[index].itemName.length + 1) * 40}}rpx;' class='itemName'>{{form[index].itemName}}:</label>
-        <textarea style='flex-direction:column;' name='{{form[index].itemName}}' class='textArea' value='{{form[index].defaultValue}}' disabled='{{!form[index].writable}}'></textarea>
+        <label style='width: {{(form[index].name.length + 1) * 40}}rpx;' class='itemName'>{{form[index].name}}:</label>
+        <textarea style='flex-direction:column;' name='{{form[index].itemId}}' class='textArea' value='{{form[index].defaultValue}}' disabled='{{!form[index].writable}}'></textarea>
       </view>
       <!-- 勾选框 -->
       <view wx:elif='{{form[index].type=="checkBox"}}' class='inputLine'>
-        <label style='width: {{(form[index].itemName.length + 1) * 40}}rpx;' class='itemName'>{{form[index].itemName}}:</label>
-        <checkbox-group name='{{form[index].itemName}}' class='checkBox-group'>
-          <checkbox wx:for='{{form[index].values}}' class='checkBox' value='{{item}}'>{{item}}</checkbox>
+        <label style='width: {{(form[index].name.length + 1) * 40}}rpx;' class='itemName'>{{form[index].name}}:</label>
+        <checkbox-group name='{{form[index].itemId}}' class='checkBox-group'>
+          <checkbox wx:for='{{form[index].values}}' class='checkBox' value='{{item}}' data-type='checkBox'>{{item}}</checkbox>
         </checkbox-group>
       </view>
       <!-- 选择框 -->
       <view wx:else class='inputLine'>
-        <label style='width: {{(form[index].itemName.length + 1) * 40}}rpx;' class='itemName'>{{form[index].itemName}}:</label>
-        <picker name='{{form[index].itemName}}' class='picker' disabled='{{!form[index].writable}}' value='{{pickerBox[index]}}' range='{{form[index].values}}' bindchange='bindPickerChange' data-index='{{index}}'>{{form[index].values[pickerBox[index]]}}</picker>
+        <label style='width: {{(form[index].name.length + 1) * 40}}rpx;' class='itemName'>{{form[index].name}}:</label>
+        <picker name='{{form[index].itemId}}' class='picker' disabled='{{!form[index].writable}}' value='{{form[index].values[pickerBox[index]]}}' range='{{form[index].values}}' bindchange='bindPickerChange' data-index='{{index}}'>{{form[index].values[pickerBox[index]]}}</picker>
       </view>
       <view class="divLine"></view>
     </view>

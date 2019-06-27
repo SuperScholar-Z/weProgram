@@ -7,7 +7,7 @@ Page({
   data: {
     processId: "123",  //流程ID
     taskId: null, //流程节点ID
-    assigneeId: "202", //流程执行人ID
+    username: "202", //流程执行人ID
     formName: null, //表单名称
     form: null, //表单内容
 
@@ -29,10 +29,10 @@ Page({
     //检查必填项
     for(let item of this.data.form){
       if (item.required){
-        if (obj.detail.value[item.itemName] == '' || obj.detail.value[item.itemName] == null){
+        if (obj.detail.value[item.itemId] == '' || obj.detail.value[item.itemId] == null){
           integrity = false
           wx.showToast({
-            title: item.itemName + '未填写',
+            title: item.name + '未填写',
             icon: 'none'
           })
           break
@@ -42,26 +42,48 @@ Page({
 
     //提交表单数据
     if (integrity){
+      //重塑form表单内容格式
+      console.log(this.data.form)
+      console.log(obj)
+      var submittedForm = []
+      for (var key in obj.detail.value){
+        var type = 'textBox'
+        this.data.form.forEach(e => {
+          if(e.itemId == key)
+            type = e.type
+        })
+        submittedForm.push({
+          "itemId": key,
+          "content": obj.detail.value[key],
+          "type": type
+        })
+      }
       var that = this
-      console.log(obj.detail)
-      var submittedForm = {
+      var requestData = {
         "processId": that.data.processId,
         "taskId": that.data.taskId,
-        "assigneeId": that.data.assigneeId,
-        "form": obj.detail.value
+        "username": that.data.username,
+        "form": JSON.parse(JSON.stringify(submittedForm))
       }
+      console.log(requestData)
       //请求向后台提交表单数据
       wx.request({
         url: 'http://localhost:8080/form/submitForm',
-        data: JSON.stringify(submittedForm),
+        data: requestData,
         method: 'POST',
         header: {
           'content-type': 'application/json',
         },
         success: function (res) {
-          if(res.errMsg == 'request:ok'){
+          if(res.data.status == 0){
             wx.showToast({
-              title: '提交成功',
+              title: '提交成功'
+            })
+          }
+          else{
+            wx.showToast({
+              title: res.data.message,
+              icon: 'none'
             })
           }
         },
@@ -82,7 +104,7 @@ Page({
     var that = this
     var requestData = {
       "processId": this.data.processId,
-      "assigneeId": this.data.assigneeId
+      "username": this.data.username
     }
     //请求获取表单内容
     wx.request({
@@ -93,37 +115,48 @@ Page({
         'content-type': 'application/json',
       },
       success: function(res){
-        //读取表单格式
-        that.setData({
-          taskId: res.data.taskId,
-          formName: res.data.formName,
-          form: res.data.form
-        })
-        //读取全部选择框
-        var indexList = []
-        for(var i = 0, length = res.data.form.length; i < length; i++){
-          var index = 0
-          //选择框若有默认值则设置默认值
-          if (res.data.form[i].defaultValue != '' && res.data.form[i].defaultValue != null){
-            for(var j = 0, valueNum = res.data.form[i].values.length; j < valueNum; j++){
-              if (res.data.form[i].values[j] == res.data.form[i].defaultValue){
-                index = j
-                break
+        if(res.data.status == 0){
+          //读取表单格式
+          that.setData({
+            taskId: res.data.taskId,
+            formName: res.data.formName,
+            form: res.data.form
+          })
+          //读取全部选择框
+          var indexList = []
+          for(var i = 0, length = res.data.form.length; i < length; i++){
+            var index = 0
+            //选择框若有默认值则设置默认值
+            if (res.data.form[i].defaultValue != '' && res.data.form[i].defaultValue != null){
+              for(var j = 0, valueNum = res.data.form[i].values.length; j < valueNum; j++){
+                if (res.data.form[i].values[j] == res.data.form[i].defaultValue){
+                  index = j
+                  break
+                }
               }
             }
+            indexList.push(index)
           }
-          indexList.push(index)
+          that.setData({
+            pickerBox: JSON.parse(JSON.stringify(indexList))
+          })
+          //设置标题
+          wx.setNavigationBarTitle({
+            title: res.data.formName
+          })
         }
-        that.setData({
-          pickerBox: JSON.parse(JSON.stringify(indexList))
-        })
-        //设置标题
-        wx.setNavigationBarTitle({
-          title: res.data.formName
-        })
+        else{
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none'
+          })
+        }
       },
       fail: function(res){
-        console.log("fail")
+        wx.showToast({
+          title: '错误:' + res.errMsg,
+          icon: 'none'
+        })
       }
     })
   },

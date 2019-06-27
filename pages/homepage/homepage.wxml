@@ -11,7 +11,7 @@
   <view wx:if="{{userInfo!=null}}" class='flow-buttons'>
     <button wx:for="{{process}}" class='button-class' hover-class='button-class-hover' bindtap='toFormPage'>
       <image mode='scaleToFill' src='/images/title_picture.jpg' plain='true' class='circle'></image>
-      <text class='viewclass'>{{item}}</text>
+      <text class='viewclass'>{{item.processName}}</text>
     </button>
   </view>
 </scroll-view>

@@ -86,10 +86,26 @@ public class Controller {
         System.out.println(requestData);
         Map<String, Object> res = new HashMap<String, Object>();
 
-        res.put("1", "流程1");
-        res.put("3", "流程3");
-        res.put("4", "流程4");
-        res.put("6", "流程6");
+        res.put("status", 0);
+        Map<String, Object> process1 = new HashMap<String, Object>();
+        process1.put("processId", "1");
+        process1.put("processName", "流程1");
+        Map<String, Object> process2 = new HashMap<String, Object>();
+        process2.put("processId", "3");
+        process2.put("processName", "流程3");
+        Map<String, Object> process3 = new HashMap<String, Object>();
+        process3.put("processId", "4");
+        process3.put("processName", "流程4");
+        Map<String, Object> process4 = new HashMap<String, Object>();
+        process4.put("processId", "6");
+        process4.put("processName", "流程6");
+        ArrayList<Map<String, Object>> process = new ArrayList<>();
+        process.add(process1);
+        process.add(process2);
+        process.add(process3);
+        process.add(process4);
+        res.put("process", process);
+
         return res;
     }
     @RequestMapping(value = "/getForm",method = RequestMethod.POST)
@@ -97,19 +113,22 @@ public class Controller {
         System.out.println(requestData);
 
         Map<String, Object> item = new HashMap<String, Object>();
-        item.put("itemName", "接口");
+        item.put("itemId", "1");
+        item.put("name", "接口");
         item.put("writable", true);
         item.put("defaultValue", "");
         item.put("required", true);
         item.put("type", "textBox");
         Map<String, Object> item2 = new HashMap<String, Object>();
-        item2.put("itemName", "接口2");
+        item2.put("itemId", "2");
+        item2.put("name", "接口2");
         item2.put("writable", true);
         item2.put("defaultValue", "");
         item2.put("required", false);
         item2.put("type", "textArea");
         Map<String, Object> item3 = new HashMap<String, Object>();
-        item3.put("itemName", "接口3");
+        item3.put("itemId", "3");
+        item3.put("name", "接口3");
         item3.put("writable", true);
         item3.put("defaultValue", "内容2");
         item3.put("required", false);
@@ -121,7 +140,8 @@ public class Controller {
         values.add("内容4");
         item3.put("values", values);
         Map<String, Object> item4 = new HashMap<String, Object>();
-        item4.put("itemName", "接口4");
+        item4.put("itemId", "4");
+        item4.put("name", "接口4");
         item4.put("writable", true);
         item4.put("defaultValue", "内容3");
         item4.put("required", false);
@@ -134,6 +154,7 @@ public class Controller {
         form.add(item2);
         form.add(item3);
         form.add(item4);
+        res.put("status", 0);
         res.put("taskId", "123456");
         res.put("formName", "体检表");
         res.put("form", form);
@@ -145,7 +166,8 @@ public class Controller {
         System.out.println(requestData);
 
         Map<String, Object> res = new HashMap<String, Object>();
+        res.put("status", 0);
         res.put("message", "success");
-        return null;
+        return res;
     }
 }
