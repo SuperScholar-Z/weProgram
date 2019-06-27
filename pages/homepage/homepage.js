@@ -8,7 +8,9 @@ Page({
 
     process: null,
     flowImages: ["/images/title_picture.jpg", "/images/title_picture.jpg", "/images/title_picture.jpg", "/images/title_picture.jpg",            "/images/title_picture.jpg", "/images/title_picture.jpg", "/images/title_picture.jpg"],
-    flowTexts: ["流程1", "流程2", "流程3", "流程4", "流程5", "流程6", "流程7"]
+    flowTexts: ["流程1", "流程2", "流程3", "流程4", "流程5", "流程6", "流程7"],
+
+    loadingCompleted: false //页面加载完成
   },
   //填流程表格
   toFormPage: function(){
@@ -29,10 +31,23 @@ Page({
     console.log(app.globalData.userInfo)
 
     wx.redirectTo({
-      url: '../index/index',
+      url: '../login/login',
     })
   },
   onLoad: function () {
+    //若未登录，重定向至登录页面
+    console.log(app.globalData.userInfo)
+    if (app.globalData.userInfo == null || app.globalData.userInfo == '') {
+      wx.redirectTo({
+        url: '../login/login',
+      })
+      return
+    }
+    //页面加载中
+    wx.showLoading({
+      title: ''
+    })
+
     this.setData({
       userInfo: app.globalData.userInfo
     })
@@ -64,10 +79,35 @@ Page({
         }
       },
       fail: function (res) {
-        wx.showToast({
-          title: '错误:' + res.errMsg,
-          icon: 'none'
+        // wx.showToast({
+        //   title: '错误:' + res.errMsg,
+        //   icon: 'none'
+        // })
+
+        //假数据
+        that.setData({
+          process: [{
+              "processId": "2",
+              "processName": "流程2"
+            },
+            {
+              "processId": "5",
+              "processName": "流程5"
+            },
+            {
+              "processId": "7",
+              "processName": "流程7"
+            },
+            {
+              "processId": "8",
+              "processName": "流程8"
+          }]
         })
+      },
+      complete: function(res){
+        that.setData({loadingCompleted: true})
+        //页面加载完毕
+        wx.hideLoading()
       }
     })
   }

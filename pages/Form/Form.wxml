@@ -6,7 +6,7 @@
     <view wx:for='{{form}}'>
       <!-- 单行输入框 -->
       <view wx:if='{{form[index].type=="textBox"}}' class='inputLine'>
-        <label style='width: {{(form[index].name.length + 1) * 40}}rpx;' class='itemName'>{{form[index].name}}:</label>
+        <label style='width: {{(form[index].name.length + 1) * 40 + 10}}rpx;' class='itemName'>{{form[index].name}}:</label>
         <input name='{{form[index].itemId}}' class='inputBox' value='{{form[index].defaultValue}}' disabled='{{!form[index].writable}}'></input>
       </view>
       <!-- 多行输入框 -->
@@ -29,6 +29,6 @@
       <view class="divLine"></view>
     </view>
     <!-- 提交按钮 -->
-    <button form-type='submit' class='submitBtn'>提交</button>
+    <button wx:if='{{loadingCompleted}}' form-type='submit' class='submitBtn'>提交</button>
   </form>
 </scroll-view>

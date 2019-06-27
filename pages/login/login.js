@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo: null
+    hasUserInfo: false
   },
 
   //登录
@@ -61,9 +61,29 @@ Page({
           }
         },
         fail: function (res) {
+          // wx.showToast({
+          //   title: '错误:' + res.errMsg,
+          //   icon: 'none'
+          // })
+
+          //假数据
           wx.showToast({
-            title: '错误:' + res.errMsg,
-            icon: 'none'
+            title: '登录成功',
+          })
+          //登录信息保存本地缓存
+          var userInfo = {
+            "username": obj.detail.value['username'],
+            "avatarUrl": '/images/Download.jpg',
+            "name": '王五',
+            'phoneNumber': '18828883888',
+            "position": '喊666'
+          }
+          app.globalData.userInfo = JSON.parse(JSON.stringify(userInfo))
+          wx.setStorageSync('userInfo', userInfo)
+
+          //跳转至主页
+          wx.navigateTo({
+            url: '../homepage/homepage'
           })
         }
       })
@@ -80,13 +100,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //若已登录，直接跳转至主页
-    console.log(app.globalData.userInfo)
-    if (app.globalData.userInfo != '' && app.globalData.userInfo != null){
-      wx.navigateTo({
-        url: '../homepage/homepage',
-      })
-    }
+
   },
 
   /**

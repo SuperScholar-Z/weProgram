@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<scroll-view>
+<scroll-view wx:if='{{userInfo!=null && userInfo!=""}}'>
   <!-- 顶部栏 -->
   <view class='text-bar'>
     <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover" bindtap='toProfilePage'></image>

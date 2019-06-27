@@ -40,6 +40,7 @@ public class Controller {
             Map<String, Object> userInfoMap = new HashMap<String, Object>();
             userInfoMap.put("jwt", "null");
             Map<String, Object> user = new HashMap<String, Object>();
+            user.put("username", userInfo.get(index).getUsername());
             user.put("name", userInfo.get(index).getName());
             user.put("phoneNumber", userInfo.get(index).getPhoneNumber());
             user.put("position", userInfo.get(index).getPosition());

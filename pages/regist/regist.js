@@ -79,9 +79,17 @@ Page({
         }
       },
       fail: function (res) {
+        // wx.showToast({
+        //   title: '错误:' + res.errMsg,
+        //   icon: 'none'
+        // })
+
+        //假数据
         wx.showToast({
-          title: '错误:' + res.errMsg,
-          icon: 'none'
+          title: "已提交审核"
+        })
+        wx.navigateBack({
+          delta: 1
         })
       }
     })

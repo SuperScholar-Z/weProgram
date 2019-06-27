@@ -13,8 +13,8 @@
 		"checkInvalidKey": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.0.4",
-	"appid": "wx0e6520dfe04f4e10",
+	"libVersion": "2.7.2",
+	"appid": "wxdd0f5ce8aa167112",
 	"projectname": "weProgram",
 	"debugOptions": {
 		"hidedInDevtools": []
